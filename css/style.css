@@ -38,3 +38,7 @@ video {
 #buttonWrapper * {
     padding: 1em;
 }
+
+#predict {
+    padding: 1em;
+}

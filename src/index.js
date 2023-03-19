@@ -3,7 +3,8 @@ let videoWidth, videoHeight
 let ctx, canvas
 const k = 3
 const machine = new kNear(k)
-const predictionDiv = document.querySelector("#prediciton")
+const predictionDiv = document.querySelector("#prediction")
+const predictDiv = document.querySelector("#predict")
 const button0 = document.querySelector("#button0")
 const button1 = document.querySelector("#button1")
 const button2 = document.querySelector("#button2")
@@ -18,8 +19,8 @@ button1.addEventListener("click", () => capturePose(button1.value))
 button2.addEventListener("click", () => capturePose(button2.value))
 button3.addEventListener("click", () => capturePose(button3.value))
 button4.addEventListener("click", () => capturePose(button4.value))
-// button5.addEventListener("click", () => capturePose(button5.value))
-button5.addEventListener("click", () => predictPose())
+button5.addEventListener("click", () => capturePose(button5.value))
+predictDiv.addEventListener("click", () => predictPose())
 
 //
 // start de applicatie
@@ -187,6 +188,9 @@ async function predictPose(){
         }
         let prediction = machine.classify(allPoints)
         console.log(`I think it's a ${prediction}`)
+        predictionDiv.innerHTML = "Je steekt " + prediction + " vingers op"
+    } else {
+        predictionDiv.innerHTML = "Ik kan geen hand vinden of er is nog niks getrained"
     }
 }
 
